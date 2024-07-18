@@ -20,7 +20,7 @@ system_prompt = """
 # Create a session state variable to store the chat messages. This ensures that the
 # messages persist across reruns.
 if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "system, "content": system_prompt}]
+    st.session_state.messages = [{"role": "system", "content": system_prompt}]
 
 # Display the existing chat messages via `st.chat_message`.
 for message in st.session_state.messages:
