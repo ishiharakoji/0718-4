@@ -20,7 +20,7 @@ system_prompt = """
 # Create a session state variable to store the chat messages. This ensures that the
 # messages persist across reruns.
 if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "system", "content": system_prompt}]
+    st.session_state.messages = []
 
 # Display the existing chat messages via `st.chat_message`.
 for message in st.session_state.messages:
@@ -32,6 +32,7 @@ for message in st.session_state.messages:
 if prompt := st.chat_input("ここに質問を入力してください"):
 
     # Store and display the current prompt.
+    st.session_state.messages.append({"role": "system", "content": system_prompt})
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
